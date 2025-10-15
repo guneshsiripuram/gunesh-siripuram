@@ -1,0 +1,35 @@
+/* Sets the default font for the entire application */
+body {
+    font-family: 'Inter', sans-serif;
+}
+
+/* Defines a simple fade-in animation for new content */
+.fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Styles for the spinning loader icon */
+.loader {
+    border: 4px solid #f3f3f3; /* Light grey circle */
+    border-top: 4px solid #3498db; /* Blue spinning part */
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
