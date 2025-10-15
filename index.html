@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Lesson Plan Creator</title>
+    <!-- TailwindCSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts for typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Link to your external CSS file -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <div class="container mx-auto p-4 md:p-8 max-w-5xl">
+
+        <!-- Header Section -->
+        <header class="text-center mb-8">
+            <div class="inline-flex items-center bg-white p-4 rounded-xl shadow-sm border border-gray-200">
+                <!-- Icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-indigo-600"><path d="M12 22h6a2 2 0 0 0 2-2V7l-5-5H6a2 2 0 0 0-2 2v3"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M4.268 12.182a2.82 2.82 0 0 0-2.82 2.82v2.828a2.82 2.82 0 0 0 2.82 2.828h2.828a2.82 2.82 0 0 0 2.82-2.82v-2.828a2.82 2.82 0 0 0-2.82-2.82zM4 16.5h.01"/><path d="m2.5 14.5.9.9a2 2 0 0 1 0 2.8l-.9.9"/><path d="m6.5 14.5-.9.9a2 2 0 0 0 0 2.8l.9.9"/></svg>
+                <h1 class="text-2xl md:text-3xl font-bold ml-3 text-gray-900">AI Lesson Plan Creator</h1>
+            </div>
+            <p class="text-gray-500 mt-2">Generate slides, quizzes, and homework from a single prompt.</p>
+        </header>
+
+        <!-- Input Form Section -->
+        <main class="bg-white p-6 rounded-2xl shadow-lg border border-gray-200">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="md:col-span-2">
+                    <label for="prompt" class="block text-sm font-medium text-gray-700 mb-1">Lesson Topic</label>
+                    <input type="text" id="prompt" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" placeholder="e.g., Photosynthesis">
+                </div>
+                <div>
+                    <label for="grade" class="block text-sm font-medium text-gray-700 mb-1">Grade Level</label>
+                    <select id="grade" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+                        <option>Kindergarten</option>
+                        <option>1st Grade</option>
+                        <option>2nd Grade</option>
+                        <option>3rd Grade</option>
+                        <option>4th Grade</option>
+                        <option selected>5th Grade</option>
+                        <option>6th Grade</option>
+                        <option>7th Grade</option>
+                        <option>8th Grade</option>
+                        <option>9th Grade</option>
+                        <option>10th Grade</option>
+                        <option>11th Grade</option>
+                        <option>12th Grade</option>
+                        <option>University</option>
+                    </select>
+                </div>
+                 <div class="md:col-span-3">
+                     <label for="subject" class="block text-sm font-medium text-gray-700 mb-1">Subject</label>
+                    <input type="text" id="subject" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" placeholder="e.g., Science">
+                </div>
+            </div>
+            <div class="mt-4">
+                <button id="generate-btn" class="w-full flex items-center justify-center bg-indigo-600 text-white font-semibold py-3 px-4 rounded-lg hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all duration-200">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/><path d="M5 3v4"/><path d="M19 17v4"/><path d="M3 5h4"/><path d="M17 19h4"/></svg>
+                    Generate Lesson Materials
+                </button>
+            </div>
+        </main>
+
+        <!-- Dynamic Content Section: Loading, Error, and Output -->
+        <div id="loading" class="text-center my-8 hidden">
+            <div class="loader inline-block"></div>
+            <p class="text-gray-600 mt-2">Generating your lesson plan... Please wait.</p>
+        </div>
+        <div id="error" class="text-center my-6 hidden bg-red-100 text-red-700 p-4 rounded-lg"></div>
+        <div id="output" class="mt-8"></div>
+
+    </div>
+
+    <!-- Link to your external JavaScript file -->
+    <script src="script.js"></script>
+</body>
+</html>
