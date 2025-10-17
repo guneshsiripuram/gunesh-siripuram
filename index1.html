@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edu-Gen Prime: Lesson Architect</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #111827; /* Dark blue-gray */
+            color: #E5E7EB; /* Light gray text */
+        }
+        .orbitron {
+            font-family: 'Orbitron', sans-serif;
+        }
+        .glass-pane {
+            background: rgba(31, 41, 55, 0.6); /* Semi-transparent dark bg */
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 40px rgba(0, 255, 255, 0.1);
+        }
+        .glowing-text {
+            text-shadow: 0 0 5px #00d4ff, 0 0 10px #00d4ff, 0 0 15px #00d4ff;
+        }
+        .glowing-border {
+            border: 1px solid #00d4ff;
+            box-shadow: 0 0 5px #00d4ff, inset 0 0 5px #00d4ff;
+        }
+        .form-input {
+            background-color: rgba(17, 24, 39, 0.8);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+        .form-input:focus {
+            background-color: rgba(17, 24, 39, 1);
+            box-shadow: 0 0 15px rgba(0, 212, 255, 0.5);
+            border-color: #00d4ff;
+        }
+        .btn-primary {
+            background: linear-gradient(45deg, #00d4ff, #0a59cc);
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(0, 212, 255, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .btn-primary:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 25px rgba(0, 212, 255, 0.6);
+        }
+        /* Fade-in animation for generated content */
+        .fade-in { animation: fadeIn 0.8s ease-in-out forwards; opacity: 0; }
+        @keyframes fadeIn { to { opacity: 1; } }
+
+        /* Styling for the timeline */
+        .timeline-item {
+            position: relative;
+            padding-left: 30px;
+            padding-bottom: 20px;
+            border-left: 2px solid #00d4ff;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -9px;
+            top: 0;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background-color: #00d4ff;
+            box-shadow: 0 0 10px #00d4ff;
+        }
+        .timeline-item:last-child { border-left: 2px solid transparent; }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-200">
+
+    <div class="container mx-auto p-4 md:p-8 max-w-6xl">
+
+        <!-- Header -->
+        <header class="text-center mb-10">
+            <h1 class="orbitron text-4xl md:text-5xl font-bold glowing-text">Edu-Gen Prime</h1>
+            <p class="text-cyan-300 mt-2">The Future of Lesson Architecture is Here.</p>
+        </header>
+        
+        <!-- Main Interface -->
+        <main class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Left Panel: Input & Customization -->
+            <div class="lg:col-span-1 glass-pane p-6 rounded-2xl">
+                <h2 class="orbitron text-2xl font-semibold mb-6 border-b border-cyan-500/30 pb-3 text-cyan-300">1. Define Core Parameters</h2>
+                
+                <div class="space-y-4">
+                    <div>
+                        <label for="prompt" class="block text-sm font-medium text-gray-400 mb-1">Lesson Topic</label>
+                        <input type="text" id="prompt" class="w-full p-3 rounded-lg form-input" placeholder="e.g., Quantum Entanglement">
+                        <p id="copilot" class="text-xs text-cyan-400/70 h-4 mt-1"></p>
+                    </div>
+                    <div>
+                        <label for="grade" class="block text-sm font-medium text-gray-400 mb-1">Academic Level</label>
+                        <select id="grade" class="w-full p-3 rounded-lg form-input">
+                            <option>High School (Introductory)</option>
+                            <option>University (Undergraduate)</option>
+                            <option>Postgraduate (Specialized)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="subject" class="block text-sm font-medium text-gray-400 mb-1">Field of Study</label>
+                        <input type="text" id="subject" class="w-full p-3 rounded-lg form-input" placeholder="e.g., Physics">
+                    </div>
+                </div>
+
+                <h2 class="orbitron text-2xl font-semibold my-6 border-b border-cyan-500/30 pb-3 text-cyan-300">2. Advanced Customization</h2>
+                <div class="space-y-4">
+                     <div>
+                        <label for="modalities" class="block text-sm font-medium text-gray-400 mb-1">Learning Modalities</label>
+                        <select id="modalities" class="w-full p-3 rounded-lg form-input">
+                            <option>Balanced (Visual, Auditory, Kinesthetic)</option>
+                            <option>Visual & Theoretical</option>
+                            <option>Interactive & Project-Based</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="context" class="block text-sm font-medium text-gray-400 mb-1">Global & Cultural Context</label>
+                        <select id="context" class="w-full p-3 rounded-lg form-input">
+                            <option>Standard/Global</option>
+                            <option>Include Historical Context (Asian)</option>
+                            <option>Include Historical Context (European)</option>
+                             <option>Focus on Modern Applications</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="mt-8">
+                    <button id="generate-btn" class="w-full flex items-center justify-center font-bold py-3 px-4 rounded-lg btn-primary orbitron">
+                        <svg id="generate-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><path d="M12 22h6a2 2 0 0 0 2-2V7l-5-5H6a2 2 0 0 0-2 2v3"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M4.268 12.182a2.82 2.82 0 0 0-2.82 2.82v2.828a2.82 2.82 0 0 0 2.82 2.828h2.828a2.82 2.82 0 0 0 2.82-2.82v-2.828a2.82 2.82 0 0 0-2.82-2.82zM4 16.5h.01"/><path d="m2.5 14.5.9.9a2 2 0 0 1 0 2.8l-.9.9"/><path d="m6.5 14.5-.9.9a2 2 0 0 0 0 2.8l.9.9"/></svg>
+                        <svg id="loading-spinner" class="animate-spin mr-3 h-5 w-5 hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>
+                        <span id="generate-text">Architect Lesson</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Right Panel: Output & Visualization -->
+            <div id="output-container" class="lg:col-span-2 glass-pane p-6 rounded-2xl hidden">
+                 <div id="error" class="text-center my-6 hidden bg-red-900/50 text-red-300 p-4 rounded-lg border border-red-500/50"></div>
+                 <div id="output"></div>
+            </div>
+            <div id="placeholder-container" class="lg:col-span-2 glass-pane p-6 rounded-2xl flex flex-col items-center justify-center text-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="text-cyan-400/50 mb-4"><path d="M12 20h.01"/><path d="M12 4h.01"/><path d="M20 12h.01"/><path d="M4 12h.01"/><path d="M18.36 18.36h.01"/><path d="M5.64 5.64h.01"/><path d="M18.36 5.64h.01"/><path d="M5.64 18.36h.01"/><path d="M12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8Z"/></svg>
+                <h3 class="orbitron text-2xl text-cyan-300">Awaiting Generation Signal</h3>
+                <p class="text-gray-400 mt-2">Define your lesson parameters and click "Architect Lesson" to generate the materials. The output will be visualized here.</p>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // --- DOM Elements ---
+        const generateBtn = document.getElementById('generate-btn');
+        const promptInput = document.getElementById('prompt');
+        const gradeSelect = document.getElementById('grade');
+        const subjectInput = document.getElementById('subject');
+        const modalitiesSelect = document.getElementById('modalities');
+        const contextSelect = document.getElementById('context');
+        const errorDiv = document.getElementById('error');
+        const outputDiv = document.getElementById('output');
+        const copilotP = document.getElementById('copilot');
+        
+        const outputContainer = document.getElementById('output-container');
+        const placeholderContainer = document.getElementById('placeholder-container');
+        const generateIcon = document.getElementById('generate-icon');
+        const loadingSpinner = document.getElementById('loading-spinner');
+        const generateText = document.getElementById('generate-text');
+
+        // --- AI Co-pilot Suggestions ---
+        const suggestions = ["Photosynthesis", "The Roman Empire", "Introduction to Python", "Newton's Laws of Motion", "Literary Devices", "The Water Cycle"];
+        let suggestionIndex = 0;
+        let charIndex = 0;
+        
+        function typeSuggestion() {
+            if (charIndex < suggestions[suggestionIndex].length) {
+                copilotP.textContent += suggestions[suggestionIndex].charAt(charIndex);
+                charIndex++;
+                setTimeout(typeSuggestion, 50);
+            } else {
+                setTimeout(eraseSuggestion, 2000);
+            }
+        }
+
+        function eraseSuggestion() {
+            if (charIndex > 0) {
+                copilotP.textContent = suggestions[suggestionIndex].substring(0, charIndex - 1);
+                charIndex--;
+                setTimeout(eraseSuggestion, 30);
+            } else {
+                suggestionIndex = (suggestionIndex + 1) % suggestions.length;
+                setTimeout(typeSuggestion, 500);
+            }
+        }
+        document.addEventListener('DOMContentLoaded', () => setTimeout(typeSuggestion, 1000));
+        
+        // --- Main Event Listener ---
+        generateBtn.addEventListener('click', generateLessonPlan);
+
+        // --- Core Logic ---
+        async function generateLessonPlan() {
+            const topic = promptInput.value;
+            const grade = gradeSelect.value;
+            const subject = subjectInput.value;
+            const modalities = modalitiesSelect.value;
+            const context = contextSelect.value;
+
+            if (!topic || !subject) {
+                showError("Please define a Lesson Topic and Field of Study.");
+                return;
+            }
+            
+            startLoadingState();
+
+            try {
+                const userPrompt = `Generate an advanced, dynamic, and engaging lesson plan on "${topic}" for an ${grade} level course in ${subject}. 
+                Tailor the content for these specific learning modalities: ${modalities}. 
+                Incorporate this context: ${context}.
+                The output must be a single JSON object. It should include a lesson title, 4 learning objectives (phrased as 'Students will be able to...'), a detailed timeline with 5 stages (Introduction, Core Concept 1, Core Concept 2, Activity, Conclusion), a 4-question multiple-choice quiz with 4 options and the correct answer indicated, and a creative homework assignment with an 'Extension Task' for advanced students.`;
+
+                const schema = {
+                    type: "OBJECT",
+                    properties: {
+                        title: { type: "STRING" },
+                        learning_objectives: { type: "ARRAY", items: { type: "STRING" } },
+                        timeline: {
+                            type: "ARRAY",
+                            items: {
+                                type: "OBJECT",
+                                properties: {
+                                    stage: { type: "STRING" },
+                                    title: { type: "STRING" },
+                                    description: { type: "STRING" }
+                                },
+                                required: ["stage", "title", "description"]
+                            }
+                        },
+                        quiz: {
+                            type: "ARRAY",
+                            items: {
+                                type: "OBJECT",
+                                properties: {
+                                    question: { type: "STRING" },
+                                    options: { type: "ARRAY", items: { type: "STRING" } },
+                                    answer: { type: "STRING" }
+                                },
+                                required: ["question", "options", "answer"]
+                            }
+                        },
+                        homework: {
+                            type: "OBJECT",
+                            properties: {
+                                title: { type: "STRING" },
+                                description: { type: "STRING" },
+                                extension_task: { type: "STRING" }
+                            },
+                            required: ["title", "description", "extension_task"]
+                        }
+                    },
+                    required: ["title", "learning_objectives", "timeline", "quiz", "homework"]
+                };
+
+                const payload = {
+                    contents: [{ parts: [{ text: userPrompt }] }],
+                    generationConfig: { responseMimeType: "application/json", responseSchema: schema }
+                };
+
+                const lessonData = await callGeminiWithBackoff(payload);
+                if (lessonData) {
+                    renderLessonPlan(lessonData);
+                } else {
+                    showError("The model returned an empty or invalid response. Please try again.");
+                }
+
+            } catch (e) {
+                console.error(e);
+                showError(`An error occurred: ${e.message}`);
+            } finally {
+                endLoadingState();
+            }
+        }
+
+        async function callGeminiWithBackoff(payload, retries = 3, delay = 1000) {
+            const apiKey = "AIzaSyDFr-fzpvf5ayLSy098qo9DKIOvnNrNlXM"; // API key is handled by the environment
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+
+            for (let i = 0; i < retries; i++) {
+                try {
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+                    if (!response.ok) throw new Error(`API request failed with status ${response.status}`);
+                    const result = await response.json();
+                    const jsonText = result?.candidates?.[0]?.content?.parts?.[0]?.text;
+                    if (jsonText) return JSON.parse(jsonText);
+                    throw new Error("Invalid response structure from API.");
+                } catch (error) {
+                    console.warn(`Attempt ${i + 1} failed. Retrying...`);
+                    if (i === retries - 1) throw error;
+                    await new Promise(resolve => setTimeout(resolve, delay));
+                    delay *= 2;
+                }
+            }
+        }
+
+        // --- UI State Management ---
+        function startLoadingState() {
+            outputDiv.innerHTML = '';
+            errorDiv.classList.add('hidden');
+            generateIcon.classList.add('hidden');
+            loadingSpinner.classList.remove('hidden');
+            generateText.textContent = "GENERATING...";
+            generateBtn.disabled = true;
+            generateBtn.classList.add('opacity-70', 'cursor-not-allowed');
+            placeholderContainer.classList.add('hidden');
+            outputContainer.classList.remove('hidden');
+        }
+
+        function endLoadingState() {
+            loadingSpinner.classList.add('hidden');
+            generateIcon.classList.remove('hidden');
+            generateText.textContent = "Architect Lesson";
+            generateBtn.disabled = false;
+            generateBtn.classList.remove('opacity-70', 'cursor-not-allowed');
+        }
+
+        function showError(message) {
+            errorDiv.textContent = message;
+            errorDiv.classList.remove('hidden');
+        }
+
+        // --- Rendering Functions ---
+        function renderLessonPlan(data) {
+             outputDiv.innerHTML = `
+                <div class="space-y-8">
+                    <div class="fade-in text-center border-b border-cyan-500/30 pb-4">
+                        <h2 class="orbitron text-3xl font-bold glowing-text">${data.title}</h2>
+                    </div>
+
+                    ${renderSection('🎯', 'Learning Objectives', renderObjectives(data.learning_objectives))}
+                    ${renderSection('⏳', 'Lesson Timeline', renderTimeline(data.timeline))}
+                    ${renderSection('❓', 'Assessment Quiz', renderQuiz(data.quiz))}
+                    ${renderSection('📚', 'Homework Assignment', renderHomework(data.homework))}
+                </div>
+            `;
+        }
+        
+        function renderSection(icon, title, content) {
+            return `
+                <section class="fade-in" style="animation-delay: 150ms;">
+                    <h3 class="orbitron text-2xl font-semibold text-cyan-300 mb-4 flex items-center">
+                        <span class="mr-3 text-2xl">${icon}</span>
+                        ${title}
+                    </h3>
+                    <div class="pl-4 border-l-2 border-cyan-500/30">${content}</div>
+                </section>
+            `;
+        }
+
+        function renderObjectives(objectives) {
+            return `<ul class="space-y-2 text-gray-300">
+                ${objectives.map(obj => `
+                    <li class="flex items-start">
+                        <svg class="w-4 h-4 mr-2 mt-1 text-cyan-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                        <span>${obj}</span>
+                    </li>`).join('')}
+            </ul>`;
+        }
+
+        function renderTimeline(timeline) {
+            return `<div class="relative">
+                ${timeline.map(item => `
+                    <div class="timeline-item">
+                        <p class="font-semibold orbitron text-cyan-400">${item.stage}: ${item.title}</p>
+                        <p class="text-gray-400 text-sm mt-1">${item.description}</p>
+                    </div>
+                `).join('')}
+            </div>`;
+        }
+
+        function renderQuiz(quiz) {
+            return `<div class="space-y-4">
+                ${quiz.map((q, index) => `
+                    <div class="glass-pane p-4 rounded-lg border border-cyan-500/20">
+                        <p class="font-medium">${index + 1}. ${q.question}</p>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-3">
+                            ${q.options.map(opt => `<button class="text-left text-sm p-2 rounded-md hover:bg-cyan-500/20 border border-transparent hover:border-cyan-500 transition">${opt}</button>`).join('')}
+                        </div>
+                        <div class="mt-3">
+                            <button class="text-xs font-semibold text-cyan-400 hover:underline" onclick="this.nextElementSibling.classList.toggle('hidden')">Toggle Answer</button>
+                            <p class="hidden mt-2 p-2 bg-cyan-900/50 text-cyan-200 rounded-md text-sm border border-cyan-500/50">Correct Answer: <strong>${q.answer}</strong></p>
+                        </div>
+                    </div>
+                `).join('')}
+            </div>`;
+        }
+
+        function renderHomework(homework) {
+            return `<div class="glass-pane p-5 rounded-lg border border-cyan-500/20">
+                <h4 class="font-bold orbitron text-cyan-400">${homework.title}</h4>
+                <p class="mt-2 text-gray-300">${homework.description}</p>
+                <div class="mt-4 pt-4 border-t border-cyan-500/20">
+                    <h5 class="font-semibold text-cyan-400 text-sm">Extension Task</h5>
+                    <p class="mt-1 text-gray-400 text-sm">${homework.extension_task}</p>
+                </div>
+            </div>`;
+        }
+    </script>
+</body>
+</html>
